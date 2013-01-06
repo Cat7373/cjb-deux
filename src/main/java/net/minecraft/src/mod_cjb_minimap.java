@@ -1,6 +1,7 @@
 package net.minecraft.src;
 
 import net.minecraft.client.Minecraft;
+
 import org.lwjgl.input.Keyboard;
 
 public class mod_cjb_minimap extends BaseMod{

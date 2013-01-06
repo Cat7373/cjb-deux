@@ -1,6 +1,14 @@
 package net.minecraft.src;
 
+import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.NetClientHandler;
+import net.minecraft.client.multiplayer.PlayerControllerMP;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntityMobSpawner;
+import net.minecraft.util.Vec3;
+import net.minecraft.world.World;
 
 public class CJB_PlayerController extends PlayerControllerMP{
 

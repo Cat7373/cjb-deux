@@ -15,7 +15,9 @@ import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
-import net.minecraft.src.GLAllocation;
+
+import net.minecraft.client.renderer.GLAllocation;
+
 import org.lwjgl.opengl.GL11;
 
 public class CJB_GLTextureBufferedImage extends BufferedImage

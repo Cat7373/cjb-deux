@@ -1,8 +1,11 @@
 package net.minecraft.src;
 
-import org.lwjgl.opengl.GL11;
-
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Gui;
+import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.item.ItemStack;
+
+import org.lwjgl.opengl.GL11;
 
 public class CJB_Button extends Gui{
 	public String text;

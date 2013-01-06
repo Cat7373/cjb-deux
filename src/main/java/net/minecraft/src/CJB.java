@@ -1,9 +1,14 @@
 package net.minecraft.src;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
+
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.world.World;
 
 public class CJB {
 	
@@ -213,19 +218,34 @@ public class CJB {
 		return i;
 	}
 	
-	public static void invokePrivateMethod(Class c, Object obj, Object args[], String s)
+	/**
+	 * Avoid if at all possible. Exceptions are dumped to stderr, and null is returned.
+	 * @param clazz type to access
+	 * @param obj to invoke on, or null if static
+	 * @param name method name to invoke
+	 * @param args 
+	 * @return result of invocation or null
+	 */
+	public static Object invokePrivateMethod(Class clazz, Object obj, String name, Object args[])
 	{
-		try
+		if (args == null)
+			args = new Object[0];
+		
+		Method methods[] = clazz.getDeclaredMethods();
+		for (int i = 0 ; i < methods.length ; i++)
 		{
-			Method methods[] = c.getDeclaredMethods();
-			for (int i = 0 ; i < methods.length ; i++)
+			if (methods[i].getName().equalsIgnoreCase(name) && methods[i].getParameterTypes().length == args.length)
 			{
-				if ( methods[i].getName().equalsIgnoreCase(s)) 
-				{
+				try {
 					methods[i].setAccessible(true);
-					methods[i].invoke(obj, args);
+					return methods[i].invoke(obj, args);
+				}
+				catch (Exception x) {
+	        		System.err.println("CJB: Error invoking " + clazz.getName() + "." + name +
+	        				(args==null ? "()" : "("+Arrays.asList(args)+")") + " : " + x);
 				}
 			}
-		} catch (Throwable e){e.printStackTrace();}
+		}
+		return null;
 	}
 }

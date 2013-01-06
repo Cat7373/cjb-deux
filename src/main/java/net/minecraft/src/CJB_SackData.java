@@ -1,5 +1,12 @@
 package net.minecraft.src;
 
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraft.world.WorldSavedData;
+
 public class CJB_SackData extends WorldSavedData
     implements IInventory
 {

@@ -1,13 +1,20 @@
 package net.minecraft.src;
 
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityClientPlayerMP;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.CraftingManager;
+import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.item.crafting.ShapedRecipes;
+import net.minecraft.item.crafting.ShapelessRecipes;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
@@ -319,29 +326,29 @@ public class CJB_Recipe {
 		CreativeTabs t = item.getCreativeTab();
 		
 		if (t == null) return 9;
-		
-		if (t instanceof CreativeTabFood)
+
+		if (t.equals(CreativeTabs.tabFood))
 			return 1;
 		
-		if (t instanceof CreativeTabTools)
+		if (t.equals(CreativeTabs.tabTools))
 			return 2;
 		
-		if (t instanceof CreativeTabBlock)
+		if (t.equals(CreativeTabs.tabBlock))
 			return 4;
 		
-		if (t instanceof CreativeTabCombat)
+		if (t.equals(CreativeTabs.tabCombat))
 			return 3;
 		
-		if (t instanceof CreativeTabTransport)
+		if (t.equals(CreativeTabs.tabTransport))
 			return 7;
 		
-		if (t instanceof CreativeTabRedstone)
+		if (t.equals(CreativeTabs.tabRedstone))
 			return 8;
 		
-		if (t instanceof CreativeTabMaterial)
+		if (t.equals(CreativeTabs.tabMaterials))
 			return 6;
 		
-		if (t instanceof CreativeTabDeco)
+		if (t.equals(CreativeTabs.tabDecorations))
 			return 5;
 		
 		return 9;

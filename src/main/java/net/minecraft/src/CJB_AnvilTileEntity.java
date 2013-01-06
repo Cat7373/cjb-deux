@@ -2,6 +2,13 @@ package net.minecraft.src;
 
 import java.util.Random;
 
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraft.tileentity.TileEntity;
+
 public class CJB_AnvilTileEntity extends TileEntity implements IInventory
 {
     /**
@@ -176,7 +183,7 @@ public class CJB_AnvilTileEntity extends TileEntity implements IInventory
         boolean var2 = false;
         
         if (var1 && this.rand.nextInt(50) == 0) {
-        	this.worldObj.playSound(xCoord, yCoord, zCoord, "cjb.anvil", 1f, 1.5f + rand.nextFloat());
+        	this.worldObj.playSoundEffect(xCoord, yCoord, zCoord, "cjb.anvil", 1f, 1.5f + rand.nextFloat());
         }
         
         if (this.canRepair())

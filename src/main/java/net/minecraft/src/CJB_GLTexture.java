@@ -5,7 +5,9 @@ import java.awt.image.BufferedImage;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
+
 import javax.imageio.ImageIO;
+
 import org.lwjgl.opengl.GL11;
 
 public class CJB_GLTexture

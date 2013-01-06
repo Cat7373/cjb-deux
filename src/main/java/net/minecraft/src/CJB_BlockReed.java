@@ -6,6 +6,9 @@ package net.minecraft.src;
 
 import java.util.Random;
 
+import net.minecraft.block.BlockReed;
+import net.minecraft.world.World;
+
 // Referenced classes of package net.minecraft.src:
 //            Block, Material, World, BlockGrass, 
 //            Item, AxisAlignedBB
@@ -16,6 +19,7 @@ public class CJB_BlockReed extends BlockReed
     protected CJB_BlockReed(int i, int j)
     {
         super(i, j);
+        this.disableStats();
     }
 
     public void updateTick(World world, int i, int j, int k, Random random)

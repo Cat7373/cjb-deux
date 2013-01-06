@@ -1,5 +1,11 @@
 package net.minecraft.src;
 
+import net.minecraft.block.Block;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemDye;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
+
 public class CJB_ItemDye extends ItemDye
 {
 

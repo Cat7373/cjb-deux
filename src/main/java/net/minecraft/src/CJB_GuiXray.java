@@ -2,6 +2,11 @@ package net.minecraft.src;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import net.minecraft.block.Block;
+import net.minecraft.client.renderer.entity.RenderItem;
+import net.minecraft.item.ItemStack;
+
 import org.lwjgl.opengl.GL11;
 
 public class CJB_GuiXray extends CJB_GuiMain

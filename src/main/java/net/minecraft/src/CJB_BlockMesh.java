@@ -1,7 +1,17 @@
 package net.minecraft.src;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.RenderBlocks;
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
 
 import org.lwjgl.opengl.GL11;
 
@@ -15,6 +25,7 @@ public class CJB_BlockMesh extends Block
         float f = 0.1875F;
         setBlockBounds(0.0F, 0.8F - f / 2.0F, 0.0F, 1.0F, 0.8F + f / 2.0F, 1.0F);
         this.setCreativeTab(CreativeTabs.tabDecorations);
+        this.disableStats();
     }
 
     @Override

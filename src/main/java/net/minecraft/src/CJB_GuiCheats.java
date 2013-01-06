@@ -1,5 +1,7 @@
 package net.minecraft.src;
 
+import net.minecraft.world.storage.WorldInfo;
+
 public class CJB_GuiCheats extends CJB_GuiMain
 {
 	private static int menuid = 1001;
@@ -52,10 +54,12 @@ public class CJB_GuiCheats extends CJB_GuiMain
         	buttonslist.add(new CJB_ButtonLabel(43, "Fast Break Speed = " + Boolean.toString(CJB.breakspeed), k, l, true, "Increasing block break speed, for creative or one hit block"));
         }
         if (selectedmenu == 1003) {
+        	WorldInfo worldInfo = CJB.w.getWorldInfo();
+        	
         	if (mc.isSingleplayer()) buttonslist.add(new CJB_ButtonLabel(50, "Always Day = " + Boolean.toString(CJB.alwaysday), k, l, true, "It will always be day"));
         	if (mc.isSingleplayer()) buttonslist.add(new CJB_ButtonLabel(51, "Always Night = " + Boolean.toString(CJB.alwaysnight), k, l, true, "It will always be night"));
-        	if (mc.isSingleplayer()) buttonslist.add(new CJB_ButtonLabel(52, "Toggle Rain = " + Boolean.toString(CJB.w.worldInfo.isRaining()), k, l, true, "Set rain on or off"));
-        	if (mc.isSingleplayer()) buttonslist.add(new CJB_ButtonLabel(53, "Toggle Thunderstorm = " + Boolean.toString(CJB.w.worldInfo.isThundering()), k, l, true, "Set thunder on or off"));
+        	if (mc.isSingleplayer()) buttonslist.add(new CJB_ButtonLabel(52, "Toggle Rain = " + Boolean.toString(worldInfo.isRaining()), k, l, true, "Set rain on or off"));
+        	if (mc.isSingleplayer()) buttonslist.add(new CJB_ButtonLabel(53, "Toggle Thunderstorm = " + Boolean.toString(worldInfo.isThundering()), k, l, true, "Set thunder on or off"));
         	if (mc.isSingleplayer()) buttonslist.add(new CJB_ButtonLabel(54, "Disable Rain = " + Boolean.toString(CJB.rain), k, l, true, "Make it never rain"));
         	if (mc.isSingleplayer()) buttonslist.add(new CJB_ButtonLabel(55, "Disable Thunder = " + Boolean.toString(CJB.thunder), k, l, true, "Make it never thunder"));
         }
@@ -136,21 +140,23 @@ public class CJB_GuiCheats extends CJB_GuiMain
         	if (cjbbutton.id == 42) CJB_Settings.setBooleanW("cheat.infinitelava",CJB.infinitelava = !CJB.infinitelava);
         	if (cjbbutton.id == 43) CJB_Settings.setBooleanW("cheat.breakspeed", CJB.breakspeed = !CJB.breakspeed);
         	
+        	WorldInfo worldInfo = CJB.w.getWorldInfo();
+        	
         	if (cjbbutton.id == 50) {
         		CJB_Settings.setBooleanW("cheat.alwaysday",CJB.alwaysday = !CJB.alwaysday);
         		CJB_Settings.setBooleanW("cheat.alwaysnight", CJB.alwaysnight = false);}
         	if (cjbbutton.id == 51) {
         		CJB_Settings.setBooleanW("cheat.alwaysnight",CJB.alwaysnight = !CJB.alwaysnight);
         		CJB_Settings.setBooleanW("cheat.alwaysday", CJB.alwaysday = false);}
-        	if (cjbbutton.id == 52 || (cjbbutton.id == 53 && !CJB.w.worldInfo.isRaining() && !CJB.w.worldInfo.isThundering())) {
-        		CJB.w.worldInfo.setRaining(!CJB.w.worldInfo.isRaining()); 
-        		CJB.w.worldInfo.setRainTime(CJB.w.rand.nextInt(CJB.w.worldInfo.isRaining() ? 12000 : 0x29040) + 12000);
-        		if (!CJB.w.worldInfo.isRaining()) CJB.w.worldInfo.setThundering(false);}
+        	if (cjbbutton.id == 52 || (cjbbutton.id == 53 && !worldInfo.isRaining() && !worldInfo.isThundering())) {
+        		worldInfo.setRaining(!worldInfo.isRaining()); 
+        		worldInfo.setRainTime(CJB.w.rand.nextInt(worldInfo.isRaining() ? 12000 : 0x29040) + 12000);
+        		if (!worldInfo.isRaining()) worldInfo.setThundering(false);}
         	if (cjbbutton.id == 53) {
-        		CJB.w.worldInfo.setThundering(!CJB.w.worldInfo.isThundering());
-        		if (CJB.w.worldInfo.isThundering())
-        			CJB.w.worldInfo.setRainTime(CJB.w.rand.nextInt(CJB.w.worldInfo.isRaining() ? 12000 : 0x29040) + 12000);
-        		CJB.w.worldInfo.setThunderTime(CJB.w.rand.nextInt(CJB.w.worldInfo.isThundering() ? 12000 : 0x29040) + 3600);}
+        		worldInfo.setThundering(!worldInfo.isThundering());
+        		if (worldInfo.isThundering())
+        			worldInfo.setRainTime(CJB.w.rand.nextInt(worldInfo.isRaining() ? 12000 : 0x29040) + 12000);
+        		worldInfo.setThunderTime(CJB.w.rand.nextInt(worldInfo.isThundering() ? 12000 : 0x29040) + 3600);}
         	if (cjbbutton.id == 54)
         	{
         		CJB_Settings.setBooleanW("cheat.rain",CJB.rain = !CJB.rain);

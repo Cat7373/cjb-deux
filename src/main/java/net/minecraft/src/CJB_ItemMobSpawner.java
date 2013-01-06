@@ -2,6 +2,20 @@ package net.minecraft.src;
 
 import java.util.Iterator;
 
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityList;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.passive.EntityVillager;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTBase;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.Facing;
+import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.world.World;
+
 import org.lwjgl.input.Keyboard;
 
 public class CJB_ItemMobSpawner extends Item
@@ -42,27 +56,29 @@ public class CJB_ItemMobSpawner extends Item
     			try {
 					int i1 = (Integer) ModLoader.getPrivateValue(EntityVillager.class, ent, 0);
 					i1 = i1 > 3 ? 0 : ++i1;
+					String texture = "/mob/villager/villager.png";
 					
 					if(i1 == 0)
 			        {
-			            ent.texture = "/mob/villager/farmer.png";
+			            texture = "/mob/villager/farmer.png";
 			        }
 			        if(i1 == 1)
 			        {
-			            ent.texture = "/mob/villager/librarian.png";
+			            texture = "/mob/villager/librarian.png";
 			        }
 			        if(i1 == 2)
 			        {
-			            ent.texture = "/mob/villager/priest.png";
+			            texture = "/mob/villager/priest.png";
 			        }
 			        if(i1 == 3)
 			        {
-			            ent.texture = "/mob/villager/smith.png";
+			            texture = "/mob/villager/smith.png";
 			        }
 			        if(i1 == 4)
 			        {
-			            ent.texture = "/mob/villager/butcher.png";
+			            texture = "/mob/villager/butcher.png";
 			        }
+			        ModLoader.setPrivateValue(EntityVillager.class, ent, "texture", texture);
 					ModLoader.setPrivateValue(EntityVillager.class, ent, 0, i1);
 				} catch (Throwable e) {
 					e.printStackTrace();

@@ -1,5 +1,10 @@
 package net.minecraft.src;
 
+import net.minecraft.client.particle.EffectRenderer;
+import net.minecraft.client.renderer.RenderEngine;
+import net.minecraft.entity.Entity;
+import net.minecraft.world.World;
+
 public class CJB_EffectRenderer extends EffectRenderer
 {
     public CJB_EffectRenderer(World par1World, RenderEngine par2RenderEngine)

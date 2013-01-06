@@ -1,5 +1,9 @@
 package net.minecraft.src;
 
+import net.minecraft.client.gui.inventory.GuiCrafting;
+import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.world.World;
+
 public class CJB_PWBGuiCrafting extends GuiCrafting
 {
     public CJB_PWBGuiCrafting(InventoryPlayer inventoryplayer, World world)

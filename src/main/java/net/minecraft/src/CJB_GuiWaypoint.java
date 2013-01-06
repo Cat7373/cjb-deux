@@ -1,14 +1,13 @@
 package net.minecraft.src;
 
-import java.io.*;
-import java.net.*;
-import java.util.ArrayList;
 import java.util.List;
 
-import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.MathHelper;
 
 import org.lwjgl.input.Keyboard;
-import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 
 public class CJB_GuiWaypoint extends GuiScreen
@@ -51,7 +50,7 @@ public class CJB_GuiWaypoint extends GuiScreen
     	this.wp.posy = MathHelper.floor_double(plr.posY);
     	this.wp.posz = MathHelper.floor_double(plr.posZ);
     	this.wp.data = plr.dimension;
-    	this.wp.color = 0xff000000 + plr.rand.nextInt(0xffffff);
+    	this.wp.color = 0xff000000 + plr.getRNG().nextInt(0xffffff);
     	
     	addWaypoint(wp);
     }

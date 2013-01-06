@@ -1,8 +1,15 @@
 package net.minecraft.src;
 
 import java.util.Random;
-import org.lwjgl.input.Keyboard;
+
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.MathHelper;
+import net.minecraft.world.World;
+
+import org.lwjgl.input.Keyboard;
 
 public class mod_cjb_itemspawner extends BaseMod {
 	
@@ -74,7 +81,7 @@ public class mod_cjb_itemspawner extends BaseMod {
         entityitem.motionY += (rand.nextFloat() - rand.nextFloat()) * 0.1F;
         entityitem.motionZ += Math.sin(f3) * (double)f1;
         
-        plr.joinEntityItemWithWorld(entityitem);
+        plr.worldObj.spawnEntityInWorld(entityitem);
 	}
 	
 	public String getVersion() {

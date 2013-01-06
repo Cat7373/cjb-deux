@@ -1,11 +1,26 @@
 package net.minecraft.src;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiChat;
+import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemBow;
+import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.MathHelper;
+import net.minecraft.util.StatCollector;
+import net.minecraft.util.Vec3;
+import net.minecraft.world.World;
+import net.minecraft.world.chunk.Chunk;
+import net.minecraft.world.storage.WorldInfo;
 
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
@@ -96,8 +111,8 @@ public class mod_cjb_moreinfo extends BaseMod {
 		
 		EntityPlayer plr = mc.thePlayer;
 		
-		WorldInfo worldinfo = CJB.w.worldInfo;
-		time = CJB.w.worldInfo.getWorldTime();
+		WorldInfo worldinfo = CJB.w.getWorldInfo();
+		time = CJB.w.getWorldInfo().getWorldTime();
         int day = (int) (time / 24000) + 1;
         int hours = (int) (time / 1000 % 24 + 6);
         if (hours > 23) hours = (hours - 29 + 5);
@@ -160,10 +175,16 @@ public class mod_cjb_moreinfo extends BaseMod {
         EntityLiving entity = GetEntityLiving(CJB.w, plr);
         if (entity != null)
         {
-        	String entname = entity.getEntityString();
+        	String entname = null;
         	
-        	if (entity instanceof EntityPlayer)
+        	if (entity instanceof EntityPlayer) {
         		entname = ((EntityPlayer)entity).username;
+        	}
+        	else {
+        		entname = (String) CJB.invokePrivateMethod(EntityLiving.class, entity, "getEntityString", null);
+        		if (entname == null)
+        			entname = entity.getClass().getSimpleName();
+        	}
         	
         	sMobInfo = entname + " - health: " + entity.getHealth();
         }

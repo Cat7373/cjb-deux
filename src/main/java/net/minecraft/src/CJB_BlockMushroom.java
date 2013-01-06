@@ -2,6 +2,9 @@ package net.minecraft.src;
 
 import java.util.Random;
 
+import net.minecraft.block.BlockMushroom;
+import net.minecraft.world.World;
+
 public class CJB_BlockMushroom extends BlockMushroom
 {
     protected CJB_BlockMushroom(int i, int j)

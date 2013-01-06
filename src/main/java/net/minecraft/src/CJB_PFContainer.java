@@ -1,5 +1,13 @@
 package net.minecraft.src;
 
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.inventory.Container;
+import net.minecraft.inventory.ICrafting;
+import net.minecraft.inventory.Slot;
+import net.minecraft.inventory.SlotFurnace;
+import net.minecraft.item.ItemStack;
+
 public class CJB_PFContainer extends Container
 {
     private CJB_PFData data;

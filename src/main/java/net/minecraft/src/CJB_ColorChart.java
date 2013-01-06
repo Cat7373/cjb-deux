@@ -1,11 +1,11 @@
 package net.minecraft.src;
 
 import java.awt.image.BufferedImage;
-import java.util.Arrays;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.renderer.RenderEngine;
 
-import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 
 public class CJB_ColorChart extends GuiScreen

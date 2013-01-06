@@ -2,9 +2,24 @@ package net.minecraft.src;
 
 import java.util.List;
 
+import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.passive.EntityTameable;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.projectile.EntityArrow;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemArmor;
+import net.minecraft.item.ItemStack;
+import net.minecraft.stats.AchievementList;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityFurnace;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.DamageSource;
+import net.minecraft.world.EnumGameType;
+
 import org.lwjgl.input.Keyboard;
-import org.lwjgl.input.Mouse;
 
 public class CJB_PlayerServer extends ServerPlayerBase{
 
@@ -153,13 +168,14 @@ public class CJB_PlayerServer extends ServerPlayerBase{
 		
 		if (!mc.isGamePaused && mc.isSingleplayer())
 		{
-			List list = player.worldObj.getEntitiesWithinAABB(net.minecraft.src.EntityItem.class, AxisAlignedBB.getBoundingBox(player.posX, player.posY, player.posZ, player.posX + 1.0D, player.posY + 1.0D, player.posZ + 1.0D).expand(60D, 60D, 60D));
+			List list = player.worldObj.getEntitiesWithinAABB(EntityItem.class, AxisAlignedBB.getBoundingBox(player.posX, player.posY, player.posZ, player.posX + 1.0D, player.posY + 1.0D, player.posZ + 1.0D).expand(60D, 60D, 60D));
 			if (!list.isEmpty()) 
 			{
 				for (int i = 0 ; i < list.size(); i++)
 				{
 					EntityItem item = (EntityItem) list.get(i);
-					ItemStack itemstack = item.item;
+					// getItemStack() ??
+					ItemStack itemstack = item.func_92014_d();
 
 					if (player.isDead || player.getHealth() <= 0 || !mod_cjb_cheats.canStoreItemStack(itemstack, player) || item.isDead && (CJB.attractiveitems && CJB.pickupdistance > 1))
 						continue;
@@ -189,7 +205,7 @@ public class CJB_PlayerServer extends ServerPlayerBase{
 		            {
 		            	int j = itemstack.stackSize;
 		            	
-			            if (item != null && !item.isDead && j > 0 && player.inventory.addItemStackToInventory(item.item))
+			            if (item != null && !item.isDead && j > 0 && player.inventory.addItemStackToInventory(itemstack))
 			            {
 			                if (itemstack.itemID == Block.wood.blockID)
 			                {
@@ -207,10 +223,10 @@ public class CJB_PlayerServer extends ServerPlayerBase{
 			                {
 			                	player.triggerAchievement(AchievementList.blazeRod);
 			                }
-			                ModLoader.onItemPickup(player, item.item);
+			                ModLoader.onItemPickup(player, itemstack);
 			                player.worldObj.playSoundAtEntity(item, "random.pop", 0.2F, ((player.worldObj.rand.nextFloat() - player.worldObj.rand.nextFloat()) * 0.7F + 1.0F) * 2.0F);
 			                player.onItemPickup(item, j);
-			                if (item.item.stackSize <= 0)
+			                if (itemstack.stackSize <= 0)
 			                {
 			                    item.setDead();
 			                }
@@ -226,6 +242,6 @@ public class CJB_PlayerServer extends ServerPlayerBase{
 	@Override
 	public boolean isEntityInsideOpaqueBlock()
     {
-        return !player.noClip && !player.sleeping && super.isEntityInsideOpaqueBlock();
+        return !player.noClip && !player.isPlayerSleeping() && super.isEntityInsideOpaqueBlock();
     }
 }

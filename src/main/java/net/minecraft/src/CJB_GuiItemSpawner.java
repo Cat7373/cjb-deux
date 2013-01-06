@@ -4,6 +4,13 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
+import net.minecraft.block.Block;
+import net.minecraft.client.renderer.entity.RenderItem;
+import net.minecraft.entity.EntityList;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.stats.AchievementList;
+
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 

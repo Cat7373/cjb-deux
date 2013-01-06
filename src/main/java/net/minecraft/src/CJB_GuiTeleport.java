@@ -3,6 +3,10 @@ package net.minecraft.src;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.minecraft.client.entity.EntityClientPlayerMP;
+import net.minecraft.client.gui.GuiPlayerInfo;
+import net.minecraft.client.multiplayer.NetClientHandler;
+
 public class CJB_GuiTeleport extends CJB_GuiMain
 {
 	private static int menuid = 1010;

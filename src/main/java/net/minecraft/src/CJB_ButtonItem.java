@@ -1,8 +1,13 @@
 package net.minecraft.src;
 
-import org.lwjgl.opengl.GL11;
-
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.client.renderer.OpenGlHelper;
+import net.minecraft.client.renderer.RenderHelper;
+import net.minecraft.client.renderer.entity.RenderItem;
+import net.minecraft.item.ItemStack;
+
+import org.lwjgl.opengl.GL11;
 
 public class CJB_ButtonItem extends CJB_Button{
 	

@@ -1,5 +1,8 @@
 package net.minecraft.src;
 
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.world.WorldSavedData;
+
 public class CJB_MPData extends WorldSavedData
 {   
     public String id;

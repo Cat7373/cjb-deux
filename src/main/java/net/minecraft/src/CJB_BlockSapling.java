@@ -6,6 +6,9 @@ package net.minecraft.src;
 
 import java.util.Random;
 
+import net.minecraft.block.BlockSapling;
+import net.minecraft.world.World;
+
 // Referenced classes of package net.minecraft.src:
 //            BlockFlower, World, WorldGenTaiga2, WorldGenForest, 
 //            WorldGenTrees, WorldGenBigTree, WorldGenerator

@@ -1,11 +1,10 @@
 package net.minecraft.src;
 
-import java.io.ByteArrayInputStream;
-import java.io.DataInputStream;
-import java.io.IOException;
-
+import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
-import net.minecraft.server.MinecraftServer;
+import net.minecraft.client.entity.EntityClientPlayerMP;
+import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.client.gui.inventory.GuiCrafting;
 
 public class mod_cjb_quickcraft extends BaseMod {
 	

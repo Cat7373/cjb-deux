@@ -1,7 +1,11 @@
 package net.minecraft.src;
 
-import org.lwjgl.input.Keyboard;
 import net.minecraft.client.Minecraft;
+import net.minecraft.item.Item;
+import net.minecraft.util.EnumMovingObjectType;
+import net.minecraft.util.MovingObjectPosition;
+
+import org.lwjgl.input.Keyboard;
 
 public class mod_cjb_measure extends BaseMod {
 	

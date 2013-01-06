@@ -3,6 +3,8 @@ package net.minecraft.src;
 import java.util.ArrayList;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiChat;
+import net.minecraft.client.gui.GuiScreen;
 
 public class mod_cjb_chat extends BaseMod {
 	

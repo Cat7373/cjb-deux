@@ -11,7 +11,31 @@ import java.util.Locale;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+
+import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.client.gui.GuiGameOver;
+import net.minecraft.client.gui.GuiIngame;
+import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.passive.EntityAnimal;
+import net.minecraft.entity.passive.EntitySquid;
+import net.minecraft.entity.passive.EntityTameable;
+import net.minecraft.entity.passive.EntityVillager;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.MathHelper;
+import net.minecraft.world.EnumSkyBlock;
+import net.minecraft.world.World;
+import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.chunk.Chunk;
+import net.minecraft.world.chunk.EmptyChunk;
+
 import org.lwjgl.opengl.GL11;
 
 public class CJB_Minimap implements Runnable
@@ -1423,7 +1447,7 @@ public class CJB_Minimap implements Runnable
             float var7 = this.theWorld.provider.lightBrightnessTable[var5 / 16] * var6;
             float var8 = this.theWorld.provider.lightBrightnessTable[var5 % 16] * 1.55F;
 
-            if (this.theWorld.lightningFlash > 0)
+            if (this.theWorld.lastLightningBolt > 0)
             {
                 var7 = this.theWorld.provider.lightBrightnessTable[var5 / 16];
             }
@@ -1568,11 +1592,14 @@ public class CJB_Minimap implements Runnable
 
     	
     	for (CJB_Data data : CJB_EntityColor.entities) {
-    		
-    		String s = ent.getEntityString();
+
+            String s;
     		
     		if (ent instanceof EntityPlayer) {
-    			s = ((EntityPlayer) ent).entityType;
+    			s = ModLoader.getPrivateValue(EntityPlayer.class, (EntityPlayer) ent, "entityType");
+    		}
+    		else {
+    			s = (String) CJB.invokePrivateMethod(Entity.class, ent, "getEntityString", null);
     		}
     		
     		if (data.Name.equalsIgnoreCase(s))

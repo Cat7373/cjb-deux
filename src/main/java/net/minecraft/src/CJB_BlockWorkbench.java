@@ -1,5 +1,9 @@
 package net.minecraft.src;
 
+import net.minecraft.block.BlockWorkbench;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.world.World;
+
 public class CJB_BlockWorkbench extends BlockWorkbench
 {
     protected CJB_BlockWorkbench(int par1)

@@ -1,5 +1,12 @@
 package net.minecraft.src;
 
+import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.client.renderer.RenderHelper;
+import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.StatCollector;
+import net.minecraft.world.storage.WorldInfo;
+
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
@@ -68,7 +75,7 @@ public class CJB_AnvilGui extends GuiContainer
     	if (i == 0)
     		return "";
     	
-    	WorldInfo worldinfo = CJB.w.worldInfo;
+    	WorldInfo worldinfo = CJB.w.getWorldInfo();
 		//long time = CJB.w.worldInfo.getWorldTime() + i;
     	long time = i;
         int hours = (int) (time / 1000);

@@ -1,9 +1,10 @@
 package net.minecraft.src;
 
 import java.util.Arrays;
-import net.minecraft.src.Chunk;
-import net.minecraft.src.EmptyChunk;
-import net.minecraft.src.World;
+
+import net.minecraft.world.World;
+import net.minecraft.world.chunk.Chunk;
+import net.minecraft.world.chunk.EmptyChunk;
 
 public class CJB_ChunkCache
 {

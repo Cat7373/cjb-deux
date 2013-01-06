@@ -6,6 +6,9 @@ package net.minecraft.src;
 
 import java.util.Random;
 
+import net.minecraft.block.BlockCactus;
+import net.minecraft.world.World;
+
 // Referenced classes of package net.minecraft.src:
 //            Block, Material, World, AxisAlignedBB, 
 //            Entity

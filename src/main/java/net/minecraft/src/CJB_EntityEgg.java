@@ -1,5 +1,17 @@
 package net.minecraft.src;
 
+import net.minecraft.entity.DataWatcher;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.passive.EntityAnimal;
+import net.minecraft.entity.passive.EntityChicken;
+import net.minecraft.entity.passive.EntityTameable;
+import net.minecraft.entity.projectile.EntityThrowable;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumMovingObjectType;
+import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.world.World;
+
 public class CJB_EntityEgg extends EntityThrowable
 {
     public CJB_EntityEgg(World par1World)
@@ -34,7 +46,7 @@ public class CJB_EntityEgg extends EntityThrowable
         	byte b = 0;
         	
         	try {
-        		b = ent.dataWatcher.getWatchableObjectByte(16);
+        		b = ent.getDataWatcher().getWatchableObjectByte(16);
         	} catch (Throwable e) {}
         	
         	item.onCatch(itemstack, worldObj, ent, b);

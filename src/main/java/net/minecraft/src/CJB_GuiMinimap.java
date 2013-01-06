@@ -3,6 +3,14 @@ package net.minecraft.src;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.minecraft.block.Block;
+import net.minecraft.client.entity.EntityClientPlayerMP;
+import net.minecraft.client.gui.GuiPlayerInfo;
+import net.minecraft.client.multiplayer.NetClientHandler;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.ChunkPosition;
+
 public class CJB_GuiMinimap extends CJB_GuiMain
 {
     private List<CJB_Button> wpmenubuttons;

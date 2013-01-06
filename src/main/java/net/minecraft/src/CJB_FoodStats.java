@@ -1,5 +1,9 @@
 package net.minecraft.src;
 
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemFood;
+import net.minecraft.util.FoodStats;
+
 public class CJB_FoodStats extends FoodStats
 {
 	EntityPlayer plr;

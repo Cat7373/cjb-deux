@@ -2,6 +2,13 @@ package net.minecraft.src;
 
 import java.util.Random;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockFire;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
+import net.minecraft.world.WorldProviderEnd;
+
 public class CJB_BlockFire extends BlockFire
 {
     /** The chance this block will encourage nearby blocks to catch on fire */
@@ -17,6 +24,7 @@ public class CJB_BlockFire extends BlockFire
     {
         super(par1, par2);
         this.setTickRandomly(true);
+        this.disableStats();
     }
 
     /**
@@ -343,7 +351,7 @@ public class CJB_BlockFire extends BlockFire
     {
         if (par5Random.nextInt(24) == 0)
         {
-            par1World.playSound((double)((float)par2 + 0.5F), (double)((float)par3 + 0.5F), (double)((float)par4 + 0.5F), "fire.fire", 1.0F + par5Random.nextFloat(), par5Random.nextFloat() * 0.7F + 0.3F);
+            par1World.playSoundEffect((double)((float)par2 + 0.5F), (double)((float)par3 + 0.5F), (double)((float)par4 + 0.5F), "fire.fire", 1.0F + par5Random.nextFloat(), par5Random.nextFloat() * 0.7F + 0.3F);
         }
 
         int var6;

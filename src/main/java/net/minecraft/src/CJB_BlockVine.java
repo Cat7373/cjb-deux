@@ -2,6 +2,9 @@ package net.minecraft.src;
 
 import java.util.Random;
 
+import net.minecraft.block.BlockVine;
+import net.minecraft.world.World;
+
 public class CJB_BlockVine extends BlockVine
 {
     public CJB_BlockVine(int i)

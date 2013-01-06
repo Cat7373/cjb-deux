@@ -1,14 +1,11 @@
 package net.minecraft.src;
 
-import java.io.*;
-import java.net.*;
-import java.util.ArrayList;
 import java.util.List;
 
-import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.gui.GuiScreen;
 
 import org.lwjgl.input.Keyboard;
-import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 
 public class CJB_GuiEntityColor extends GuiScreen

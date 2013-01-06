@@ -1,4 +1,7 @@
 package net.minecraft.src;
+import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.entity.player.InventoryPlayer;
+
 import org.lwjgl.opengl.GL11;
 
 public class CJB_RecyclerGui extends GuiContainer

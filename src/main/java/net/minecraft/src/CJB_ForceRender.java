@@ -1,5 +1,9 @@
 package net.minecraft.src;
 
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.entity.Render;
+import net.minecraft.entity.Entity;
+
 import org.lwjgl.opengl.GL11;
 
 public class CJB_ForceRender extends Render

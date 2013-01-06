@@ -3,6 +3,20 @@ package net.minecraft.src;
 
 import java.util.Random;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockContainer;
+import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.RenderBlocks;
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.MathHelper;
+import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
+
 import org.lwjgl.opengl.GL11;
 
 public class CJB_AnvilBlock extends BlockContainer
@@ -14,6 +28,7 @@ public class CJB_AnvilBlock extends BlockContainer
         super(i, Material.iron);
         blockIndexInTexture = 20;
         this.setCreativeTab(CreativeTabs.tabDecorations);
+        this.disableStats();
     }
     
     @Override

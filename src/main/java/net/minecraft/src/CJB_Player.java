@@ -1,12 +1,24 @@
 package net.minecraft.src;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.item.EntityMinecart;
+import net.minecraft.entity.passive.EntityTameable;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemArmor;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.world.World;
+
 import org.lwjgl.input.Keyboard;
-import org.lwjgl.input.Mouse;
 
 public class CJB_Player extends PlayerBase{
 
@@ -47,15 +59,16 @@ public class CJB_Player extends PlayerBase{
 				
 				float flyVertical = 0F;
 				float pitch = Math.abs((0.0050F * (speedkey || CJB.toggleSpeed || CJB.alwaysspeed ? CJB.flyspeed : 1)) * player.rotationPitch);
+				float moveForward = ((Float) ModLoader.getPrivateValue(EntityPlayerSP.class, player, "moveForward"));
 				
-				if (player.moveForward > 0.01F && CJB.mouseControl)
+				if (moveForward > 0.01F && CJB.mouseControl)
 				{
 					if (player.rotationPitch > 0)
 						flyVertical -= pitch;
 					if (player.rotationPitch < 0)
 						flyVertical += pitch;
 				}
-				else if (player.moveForward < -0.01F && CJB.mouseControl)
+				else if (moveForward < -0.01F && CJB.mouseControl)
 				{
 					if (player.rotationPitch > 0)
 						flyVertical += pitch;
@@ -203,13 +216,15 @@ public class CJB_Player extends PlayerBase{
 		}
 		if (!mc.isGamePaused && mc.isSingleplayer())
 		{
-			List list = player.worldObj.getEntitiesWithinAABB(net.minecraft.src.EntityItem.class, AxisAlignedBB.getBoundingBox(player.posX, player.posY, player.posZ, player.posX + 1.0D, player.posY + 1.0D, player.posZ + 1.0D).expand(60D, 60D, 60D));
+			List list = player.worldObj.getEntitiesWithinAABB(EntityItem.class, AxisAlignedBB.getBoundingBox(player.posX, player.posY, player.posZ, player.posX + 1.0D, player.posY + 1.0D, player.posZ + 1.0D).expand(60D, 60D, 60D));
 			if (!list.isEmpty()) 
 			{
 				for (int i = 0 ; i < list.size(); i++)
 				{
 					EntityItem item = (EntityItem) list.get(i);
-					ItemStack itemstack = item.item;
+					// getItemStack() ??
+					ItemStack itemstack = item.func_92014_d();
+
 
 					if (player.isDead || player.getHealth() <= 0 || !mod_cjb_cheats.canStoreItemStack(itemstack, player) || item.isDead && (CJB.attractiveitems && CJB.pickupdistance > 1))
 						continue;
@@ -292,11 +307,11 @@ public class CJB_Player extends PlayerBase{
 	@Override
 	public boolean isEntityInsideOpaqueBlock()
     {
-        return !player.noClip && !player.sleeping && super.isEntityInsideOpaqueBlock();
+        return !player.noClip && !player.isPlayerSleeping() && super.isEntityInsideOpaqueBlock();
     }
 	
 	@Override
 	public MovingObjectPosition rayTrace(double var1, float var3) {
-		return player.superRayTrace(mc.playerController.getBlockReachDistance(), var3);
+		return player.rayTrace(mc.playerController.getBlockReachDistance(), var3);
 	}
 }

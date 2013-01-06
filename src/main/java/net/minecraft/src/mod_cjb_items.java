@@ -6,13 +6,33 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 
-import org.lwjgl.opengl.GL11;
-
-import cpw.mods.fml.common.Mod;
-
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityClientPlayerMP;
+import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.client.gui.inventory.GuiChest;
+import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.client.multiplayer.NetClientHandler;
+import net.minecraft.client.renderer.RenderBlocks;
+import net.minecraft.client.renderer.entity.RenderSnowball;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.inventory.InventoryBasic;
+import net.minecraft.item.EnumArmorMaterial;
+import net.minecraft.item.EnumToolMaterial;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.network.NetServerHandler;
+import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 import net.minecraftforge.client.MinecraftForgeClient;
+
+import org.lwjgl.opengl.GL11;
 
 public class mod_cjb_items extends BaseMod {
 	
@@ -230,14 +250,14 @@ public class mod_cjb_items extends BaseMod {
 		}
 		
 		if (mesh > 0) {
-			Mesh = (CJB_BlockMesh) new CJB_BlockMesh(mesh, Material.wood).setHardness(3F).setStepSound(Block.soundWoodFootstep).setBlockName("mesh").disableStats().setRequiresSelfNotify();
+			Mesh = (CJB_BlockMesh) new CJB_BlockMesh(mesh, Material.wood).setHardness(3F).setStepSound(Block.soundWoodFootstep).setBlockName("mesh").setRequiresSelfNotify();
 			ModLoader.registerBlock(Mesh);
 			ModLoader.addName(Mesh, "Mesh");
 			ModLoader.addRecipe(new ItemStack(Mesh, 16), new Object[]{"# #", " # ", "# #", Character.valueOf('#'), Item.ingotIron});
 			MeshModelID = ModLoader.getUniqueBlockModelID(this, true);
 		}
 		if (anvil > 0) {
-			Anvil = (CJB_AnvilBlock) new CJB_AnvilBlock(anvil).setHardness(3F).setStepSound(Block.soundMetalFootstep).setBlockName("anvil").disableStats().setRequiresSelfNotify();
+			Anvil = (CJB_AnvilBlock) new CJB_AnvilBlock(anvil).setHardness(3F).setStepSound(Block.soundMetalFootstep).setBlockName("anvil").setRequiresSelfNotify();
 			ModLoader.registerBlock(Anvil);
 			ModLoader.addName(Anvil, "Anvil");
 			ModLoader.addRecipe(new ItemStack(Anvil, 1), new Object[]{"###", " X ", Character.valueOf('#'), Block.blockSteel, Character.valueOf('X'), Block.stoneSingleSlab});

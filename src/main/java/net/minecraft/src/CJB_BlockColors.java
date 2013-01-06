@@ -2,7 +2,8 @@ package net.minecraft.src;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import net.minecraft.src.Block;
+
+import net.minecraft.block.Block;
 
 public final class CJB_BlockColors
 {

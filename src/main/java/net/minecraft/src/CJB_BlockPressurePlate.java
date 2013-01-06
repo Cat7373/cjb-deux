@@ -7,6 +7,17 @@ package net.minecraft.src;
 import java.util.List;
 import java.util.Random;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityCreature;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
+
 // Referenced classes of package net.minecraft.src:
 //            Block, World, EnumMobType, AxisAlignedBB, 
 //            EntityLiving, EntityPlayer, IBlockAccess, Material, 
@@ -124,15 +135,15 @@ public class CJB_BlockPressurePlate extends Block
         }
         if(triggerMobType.equalsIgnoreCase("living"))
         {
-            list = world.getEntitiesWithinAABB(net.minecraft.src.EntityLiving.class, AxisAlignedBB.getBoundingBox((float)i + f, j, (float)k + f, (float)(i + 1) - f, (double)j + 0.25D, (float)(k + 1) - f));
+            list = world.getEntitiesWithinAABB(EntityLiving.class, AxisAlignedBB.getBoundingBox((float)i + f, j, (float)k + f, (float)(i + 1) - f, (double)j + 0.25D, (float)(k + 1) - f));
         }
         if(triggerMobType.equalsIgnoreCase("creatures"))
         {
-            list = world.getEntitiesWithinAABB(net.minecraft.src.EntityCreature.class, AxisAlignedBB.getBoundingBox((float)i + f, j, (float)k + f, (float)(i + 1) - f, (double)j + 0.25D, (float)(k + 1) - f));
+            list = world.getEntitiesWithinAABB(EntityCreature.class, AxisAlignedBB.getBoundingBox((float)i + f, j, (float)k + f, (float)(i + 1) - f, (double)j + 0.25D, (float)(k + 1) - f));
         }
         if(triggerMobType.equalsIgnoreCase("players"))
         {
-            list = world.getEntitiesWithinAABB(net.minecraft.src.EntityPlayer.class, AxisAlignedBB.getBoundingBox((float)i + f, j, (float)k + f, (float)(i + 1) - f, (double)j + 0.25D, (float)(k + 1) - f));
+            list = world.getEntitiesWithinAABB(EntityPlayer.class, AxisAlignedBB.getBoundingBox((float)i + f, j, (float)k + f, (float)(i + 1) - f, (double)j + 0.25D, (float)(k + 1) - f));
         }
         if(list.size() > 0)
         {

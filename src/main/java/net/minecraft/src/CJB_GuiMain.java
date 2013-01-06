@@ -1,9 +1,16 @@
 package net.minecraft.src;
 
-import java.io.*;
-import java.net.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+
+import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ChatAllowedCharacters;
+
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
@@ -315,7 +322,7 @@ public abstract class CJB_GuiMain extends GuiScreen
     	}
     	
     	if (m[0].equalsIgnoreCase("killme")) {
-    		plr.health = -9999;
+    		plr.setHealth(-9999);
     		return true;
     	}
     	

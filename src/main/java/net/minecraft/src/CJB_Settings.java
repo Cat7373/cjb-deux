@@ -1,13 +1,22 @@
 package net.minecraft.src;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.ObjectInputStream;
+import java.io.PrintWriter;
 import java.net.Socket;
-import java.net.SocketAddress;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.NetClientHandler;
+import net.minecraft.network.TcpConnection;
+import net.minecraft.world.storage.SaveHandler;
 
 public class CJB_Settings 
 {
@@ -150,7 +159,7 @@ public class CJB_Settings
 			return;
 		}
 		try {
-			FileOutputStream outputStream = new FileOutputStream(new File(((SaveHandler) mc.getIntegratedServer().worldServerForDimension(0).saveHandler).getSaveDirectory(),"cjb_settings.txt"));
+			FileOutputStream outputStream = new FileOutputStream(new File(((SaveHandler) mc.getIntegratedServer().worldServerForDimension(0).getSaveHandler()).getSaveDirectory(),"cjb_settings.txt"));
 			pw.store(outputStream,null);
 			outputStream.close();
 		} catch (Throwable e) {}
@@ -165,7 +174,7 @@ public class CJB_Settings
 		}
 		
 		try {
-			FileInputStream inputstream = new FileInputStream(new File(((SaveHandler) mc.getIntegratedServer().worldServerForDimension(0).saveHandler).getSaveDirectory(),"cjb_settings.txt"));
+			FileInputStream inputstream = new FileInputStream(new File(((SaveHandler) mc.getIntegratedServer().worldServerForDimension(0).getSaveHandler()).getSaveDirectory(),"cjb_settings.txt"));
 			pw.load(inputstream);
 			
 			if (pw.containsKey("menukey"))
@@ -202,7 +211,7 @@ public class CJB_Settings
 		
 		if (worldsave) {
 			if (mc.isSingleplayer())
-				locfile = new File(((SaveHandler) mc.getIntegratedServer().worldServerForDimension(0).saveHandler).getSaveDirectory(),"cjb_" + filename + ".txt");
+				locfile = new File(((SaveHandler) mc.getIntegratedServer().worldServerForDimension(0).getSaveHandler()).getSaveDirectory(),"cjb_" + filename + ".txt");
 			else
 				locfile = new File(Minecraft.getMinecraftDir(), "saves/cjb_" + getServerName() + filename + ".txt");
 		} else {
@@ -249,7 +258,7 @@ public class CJB_Settings
 		
 		if (worldsave) {
 			if (mc.isSingleplayer())
-				locfile = new File(((SaveHandler) mc.getIntegratedServer().worldServerForDimension(0).saveHandler).getSaveDirectory(),"cjb_" + filename + ".txt");
+				locfile = new File(((SaveHandler) mc.getIntegratedServer().worldServerForDimension(0).getSaveHandler()).getSaveDirectory(),"cjb_" + filename + ".txt");
 			else
 				locfile = new File(Minecraft.getMinecraftDir(), "saves/cjb_" + getServerName() + filename + ".txt");
 		} else {
@@ -298,7 +307,7 @@ public class CJB_Settings
     	
     	File locfile = null;
     	if (mc.isSingleplayer())
-			locfile = new File(((SaveHandler) CJB.w.saveHandler).getSaveDirectory(),"cjb_locations.dat");
+			locfile = new File(((SaveHandler) CJB.w.getSaveHandler()).getSaveDirectory(),"cjb_locations.dat");
 		else
 			locfile = new File(Minecraft.getMinecraftDir(), "saves/cjb_" + getServerName() + "_locations.dat");
     	
@@ -351,7 +360,7 @@ public class CJB_Settings
     {
     	File locfile;
     	if (mc.isSingleplayer())
-    		locfile = new File(((SaveHandler) CJB.w.saveHandler).getSaveDirectory(),"cjb_waypoints.dat");
+    		locfile = new File(((SaveHandler) CJB.w.getSaveHandler()).getSaveDirectory(),"cjb_waypoints.dat");
     	else {
     		locfile = new File(Minecraft.getMinecraftDir(), "saves/cjb_" + getServerName() + "_waypoints.dat");
     	}
@@ -396,11 +405,11 @@ public class CJB_Settings
 			if (handler == null)
 				return "No handler";
 			
-			TcpConnection nm = (TcpConnection) ModLoader.getPrivateValue(net.minecraft.src.NetClientHandler.class, handler, 1);
+			TcpConnection nm = (TcpConnection) ModLoader.getPrivateValue(NetClientHandler.class, handler, 1);
 			if (nm == null)
 				return "No NetworkManager";
 			
-			Socket socket = (Socket) ModLoader.getPrivateValue(net.minecraft.src.TcpConnection.class, nm, 3);
+			Socket socket = (Socket) ModLoader.getPrivateValue(TcpConnection.class, nm, 3);
 			if (socket == null)
 				return "No socket";
 			

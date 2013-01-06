@@ -2,6 +2,12 @@ package net.minecraft.src;
 
 import java.util.concurrent.ConcurrentLinkedQueue;
 
+import net.minecraft.world.ColorizerFoliage;
+import net.minecraft.world.ColorizerGrass;
+import net.minecraft.world.World;
+import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.chunk.Chunk;
+
 class CJB_Environment
 {
     private static ConcurrentLinkedQueue queue = new ConcurrentLinkedQueue();

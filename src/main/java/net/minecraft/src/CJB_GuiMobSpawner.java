@@ -2,7 +2,16 @@ package net.minecraft.src;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+import net.minecraft.entity.EntityList;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.tileentity.TileEntityMobSpawner;
+import net.minecraft.world.World;
 
 public class CJB_GuiMobSpawner extends CJB_GuiMain
 {

@@ -1,5 +1,16 @@
 package net.minecraft.src;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.FurnaceRecipes;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraft.world.WorldSavedData;
+
 public class CJB_PFData extends WorldSavedData implements IInventory
 {   
     public ItemStack furnaceItemStacks[];

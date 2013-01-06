@@ -1,6 +1,7 @@
 package net.minecraft.src;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.achievement.GuiAchievement;
 
 public class CJB_GuiAchievement extends GuiAchievement
 {

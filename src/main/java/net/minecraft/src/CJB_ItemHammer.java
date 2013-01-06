@@ -1,5 +1,9 @@
 package net.minecraft.src;
 
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.EnumToolMaterial;
+import net.minecraft.item.Item;
+
 public class CJB_ItemHammer extends Item
 {
     protected EnumToolMaterial toolMaterial;

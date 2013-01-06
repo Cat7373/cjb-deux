@@ -10,6 +10,20 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Random;
 
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.CraftingManager;
+import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.item.crafting.ShapedRecipes;
+import net.minecraft.item.crafting.ShapelessRecipes;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraft.network.packet.Packet250CustomPayload;
+import net.minecraft.tileentity.TileEntity;
+
 // Referenced classes of package net.minecraft.src:
 //            TileEntity, IInventory, ItemStack, NBTTagCompound, 
 //            NBTTagList, World, EntityPlayer
@@ -149,7 +163,7 @@ public class CJB_RecyclerTileEntity extends TileEntity
     			}
     			
     			
-    			aitemstack = (ItemStack[])ModLoader.getPrivateValue(net.minecraft.src.ShapedRecipes.class, (ShapedRecipes)irecipe, 2);
+    			aitemstack = (ItemStack[])ModLoader.getPrivateValue(ShapedRecipes.class, (ShapedRecipes)irecipe, 2);
     			for (int i = 0 ; i < aitemstack.length ; i++)
     			{
     				if (aitemstack[i] != null) {
@@ -161,7 +175,7 @@ public class CJB_RecyclerTileEntity extends TileEntity
     		} else
     		
     		if (irecipe instanceof ShapelessRecipes) {
-    			List list = (List)ModLoader.getPrivateValue(net.minecraft.src.ShapelessRecipes.class, (ShapelessRecipes)irecipe, 1);
+    			List list = (List)ModLoader.getPrivateValue(ShapelessRecipes.class, (ShapelessRecipes)irecipe, 1);
     			for (int i = 0 ; i < list.size() ; i++)
     			{
     				int itemdamage = ((ItemStack)list.get(i)).getItemDamageForDisplay();

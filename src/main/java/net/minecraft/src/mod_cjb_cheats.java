@@ -1,7 +1,29 @@
 package net.minecraft.src;
-import java.util.List;
-import org.lwjgl.input.Keyboard;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockCactus;
+import net.minecraft.block.BlockCrops;
+import net.minecraft.block.BlockFarmland;
+import net.minecraft.block.BlockFire;
+import net.minecraft.block.BlockFlower;
+import net.minecraft.block.BlockMushroom;
+import net.minecraft.block.BlockReed;
+import net.minecraft.block.BlockSapling;
+import net.minecraft.block.BlockStem;
+import net.minecraft.block.BlockVine;
+import net.minecraft.block.StepSound;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.PlayerControllerMP;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemDye;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.FoodStats;
+import net.minecraft.world.EnumGameType;
+import net.minecraft.world.World;
+
+import org.lwjgl.input.Keyboard;
 
 public class mod_cjb_cheats extends BaseMod {
 	
@@ -152,11 +174,11 @@ public class mod_cjb_cheats extends BaseMod {
 			}
 		}
 		
-		if (CJB.disablehunger && !(plr.foodStats instanceof CJB_FoodStats))
-			plr.foodStats = new CJB_FoodStats();
+		if (CJB.disablehunger && !(plr.getFoodStats() instanceof CJB_FoodStats))
+			ModLoader.setPrivateValue(EntityPlayer.class, plr, "foodStats", new CJB_FoodStats());
 		
-		if (!CJB.disablehunger && plr.foodStats instanceof CJB_FoodStats)
-			plr.foodStats = new FoodStats();
+		if (!CJB.disablehunger && plr.getFoodStats() instanceof CJB_FoodStats)
+			ModLoader.setPrivateValue(EntityPlayer.class, plr, "foodStats", new FoodStats());
 		
 		if (CJB.walkoversoil && !(Block.blocksList[60] instanceof CJB_BlockFarmland)) {
 			Block.blocksList[60] = null;
@@ -165,12 +187,12 @@ public class mod_cjb_cheats extends BaseMod {
 		if ((!CJB.walkoversoil || !mc.isSingleplayer()) && Block.blocksList[60] instanceof CJB_BlockFarmland)
 		{
 			Block.blocksList[60] = null;
-			Block.blocksList[60] = new BlockFarmland(60).setHardness(0.6F).setStepSound(new StepSound("gravel", 1.0F, 1.0F)).setBlockName("farmland");
+			Block.blocksList[60] = Block.tilledField; //new BlockFarmland(60).setHardness(0.6F).setStepSound(new StepSound("gravel", 1.0F, 1.0F)).setBlockName("farmland");
 		}
 		
 		if (CJB.nofirespread && !(Block.blocksList[60] instanceof CJB_BlockFire)) {
 			Block.blocksList[51] = null;
-			Block.blocksList[51] = new CJB_BlockFire(51, 31).setHardness(0.0F).setLightValue(1.0F).setStepSound(Block.soundWoodFootstep).setBlockName("fire").disableStats();
+			Block.blocksList[51] = new CJB_BlockFire(51, 31).setHardness(0.0F).setLightValue(1.0F).setStepSound(Block.soundWoodFootstep).setBlockName("fire");
 		}
 		if ((!CJB.nofirespread || !mc.isSingleplayer()) && Block.blocksList[60] instanceof BlockFire)
 		{
@@ -187,9 +209,9 @@ public class mod_cjb_cheats extends BaseMod {
 	
 		if (CJB.fastgrowth && !(Block.blocksList[59] instanceof CJB_BlockCrops)) {
 			Block.blocksList[59] = null;
-			Block.blocksList[59] = (new CJB_BlockCrops(59, 88)).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setBlockName("crops").disableStats().setRequiresSelfNotify();
+			Block.blocksList[59] = (new CJB_BlockCrops(59, 88)).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setBlockName("crops").setRequiresSelfNotify();
 			Block.blocksList[83] = null;
-			Block.blocksList[83] = (new CJB_BlockReed(83, 73)).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setBlockName("reeds").disableStats();
+			Block.blocksList[83] = (new CJB_BlockReed(83, 73)).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setBlockName("reeds");
 			Block.blocksList[6] = null;
 			Block.blocksList[6] = (new CJB_BlockSapling(6, 15)).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setBlockName("sapling").setRequiresSelfNotify();
 			Block.blocksList[81] = null;
@@ -210,23 +232,23 @@ public class mod_cjb_cheats extends BaseMod {
 		}
 		else if (!CJB.fastgrowth && (Block.blocksList[59] instanceof CJB_BlockCrops)) {
 			Block.blocksList[59] = null;
-			Block.blocksList[59] = (new BlockCrops(59, 88)).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setBlockName("crops").disableStats().setRequiresSelfNotify();
+			Block.blocksList[59] = Block.crops;//(new BlockCrops(59, 88)).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setBlockName("crops").setRequiresSelfNotify();
 			Block.blocksList[83] = null;
-			Block.blocksList[83] = (new BlockReed(83, 73)).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setBlockName("reeds").disableStats();
+			Block.blocksList[83] = Block.reed;//(new BlockReed(83, 73)).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setBlockName("reeds");
 			Block.blocksList[6] = null;
-			Block.blocksList[6] = (new BlockSapling(6, 15)).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setBlockName("sapling").setRequiresSelfNotify();
+			Block.blocksList[6] = Block.sapling;//(new BlockSapling(6, 15)).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setBlockName("sapling").setRequiresSelfNotify();
 			Block.blocksList[81] = null;
-			Block.blocksList[81] = (new BlockCactus(81, 70)).setHardness(0.4F).setStepSound(Block.soundClothFootstep).setBlockName("cactus");
+			Block.blocksList[81] = Block.cactus;//(new BlockCactus(81, 70)).setHardness(0.4F).setStepSound(Block.soundClothFootstep).setBlockName("cactus");
 			Block.blocksList[104] = null;
-			Block.blocksList[104] = (new BlockStem(104, Block.pumpkin)).setHardness(0.0F).setStepSound(Block.soundWoodFootstep).setBlockName("pumpkinStem").setRequiresSelfNotify();
+			Block.blocksList[104] = Block.pumpkinStem;//(new BlockStem(104, Block.pumpkin)).setHardness(0.0F).setStepSound(Block.soundWoodFootstep).setBlockName("pumpkinStem").setRequiresSelfNotify();
 			Block.blocksList[105] = null;
-			Block.blocksList[105] = (new BlockStem(105, Block.melon)).setHardness(0.0F).setStepSound(Block.soundWoodFootstep).setBlockName("pumpkinStem").setRequiresSelfNotify();
+			Block.blocksList[105] = Block.melonStem;//(new BlockStem(105, Block.melon)).setHardness(0.0F).setStepSound(Block.soundWoodFootstep).setBlockName("pumpkinStem").setRequiresSelfNotify();
 			Block.blocksList[39] = null;
-			Block.blocksList[39] = (BlockFlower)(new BlockMushroom(39, 29)).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setLightValue(0.125F).setBlockName("mushroom");
+			Block.blocksList[39] = Block.mushroomBrown;//(BlockFlower)(new BlockMushroom(39, 29)).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setLightValue(0.125F).setBlockName("mushroom");
 			Block.blocksList[40] = null;
-			Block.blocksList[40] = (BlockFlower)(new BlockMushroom(40, 28)).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setBlockName("mushroom");
+			Block.blocksList[40] = Block.mushroomRed;//(BlockFlower)(new BlockMushroom(40, 28)).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setBlockName("mushroom");
 			Block.blocksList[106] = null;
-			Block.blocksList[106] = (new BlockVine(106)).setHardness(0.2F).setStepSound(Block.soundGrassFootstep).setBlockName("vine").setRequiresSelfNotify();
+			Block.blocksList[106] = Block.vine;//(new BlockVine(106)).setHardness(0.2F).setStepSound(Block.soundGrassFootstep).setBlockName("vine").setRequiresSelfNotify();
 			
 			Item.itemsList[256+95] = null;
 			Item.dyePowder = (new ItemDye(95)).setIconCoord(14, 4).setItemName("dyePowder");
@@ -244,15 +266,15 @@ public class mod_cjb_cheats extends BaseMod {
 			world.setWorldTime(world.getWorldTime() + 15000 - time);
 		}		
 		
-		if (CJB.rain && world.worldInfo.isRaining())
+		if (CJB.rain && world.getWorldInfo().isRaining())
 		{
-			world.worldInfo.setRaining(false);
-			world.worldInfo.setThundering(false);
+			world.getWorldInfo().setRaining(false);
+			world.getWorldInfo().setThundering(false);
 		}
 		
-		if (CJB.thunder && world.worldInfo.isThundering())
+		if (CJB.thunder && world.getWorldInfo().isThundering())
 		{
-			world.worldInfo.setThundering(false);
+			world.getWorldInfo().setThundering(false);
 		}
 		
 		return true;

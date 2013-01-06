@@ -3,6 +3,18 @@ package net.minecraft.src;
 import java.util.HashMap;
 import java.util.Map;
 
+import net.minecraft.block.Block;
+import net.minecraft.entity.EntityEggInfo;
+import net.minecraft.entity.EntityList;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.passive.EntityAnimal;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.Facing;
+import net.minecraft.util.StatCollector;
+import net.minecraft.world.World;
+
 public class CJB_ItemMonsterPlacer extends Item
 {
     public CJB_ItemMonsterPlacer(int par1)
@@ -25,7 +37,8 @@ public class CJB_ItemMonsterPlacer extends Item
     {   	
         itemstack.setItemDamage(world.getUniqueDataId("CJB_MP"));
         String s = "CJB_MP_" + itemstack.getItemDamage();
-        CJB_MPData data = new CJB_MPData(s, ent.getEntityString(), ent.getGrowingAge(), datawatcher, ent.getHealth());
+        String entname = (String) CJB.invokePrivateMethod(EntityAnimal.class, ent, "getEntityString", null);
+        CJB_MPData data = new CJB_MPData(s, entname, ent.getGrowingAge(), datawatcher, ent.getHealth());
         
         world.setItemData(s, data);
         data.markDirty();
@@ -164,10 +177,10 @@ public class CJB_ItemMonsterPlacer extends Item
 
         EntityAnimal entity = (EntityAnimal) EntityList.createEntityByName(data.id, world);
         entity.setGrowingAge(data.data1);
-        entity.health = data.health;
+        entity.setEntityHealth(data.health);
         
 		try {
-			entity.dataWatcher.updateObject(16, data.data2);
+			entity.getDataWatcher().updateObject(16, data.data2);
 		} catch (Throwable e) {
 		}
 		

@@ -1,9 +1,16 @@
 package net.minecraft.src;
 
 
-import org.lwjgl.input.Keyboard;
-
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiMainMenu;
+import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.gui.achievement.GuiAchievement;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.world.World;
+import net.minecraft.world.WorldProvider;
+
+import org.lwjgl.input.Keyboard;
 
 public class mod_cjb_main extends BaseMod {
 	
@@ -144,7 +151,8 @@ public class mod_cjb_main extends BaseMod {
     	if (!CJB.nvlight)
 			return;
     	CJB.nvlight = false;
-    	mc.theWorld.provider.generateLightBrightnessTable();
+    	CJB.invokePrivateMethod(WorldProvider.class, mc.theWorld.provider, "generateLightBrightnessTable", null);
+    	mc.theWorld.provider.registerWorld(mc.theWorld);
     	mc.renderGlobal.loadRenderers();
     }
 	

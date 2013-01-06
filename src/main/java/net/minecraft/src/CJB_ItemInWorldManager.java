@@ -1,6 +1,15 @@
 package net.minecraft.src;
 
-import net.minecraftforge.common.ForgeHooks;
+import net.minecraft.block.Block;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemInWorldManager;
+import net.minecraft.item.ItemStack;
+import net.minecraft.network.packet.Packet53BlockChange;
+import net.minecraft.world.EnumGameType;
+import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.Event;
 import net.minecraftforge.event.ForgeEventFactory;

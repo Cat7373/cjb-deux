@@ -2,6 +2,11 @@ package net.minecraft.src;
 
 import java.util.Random;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockFarmland;
+import net.minecraft.entity.Entity;
+import net.minecraft.world.World;
+
 public class CJB_BlockFarmland extends BlockFarmland
 {
     protected CJB_BlockFarmland(int i)

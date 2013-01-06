@@ -1,6 +1,7 @@
 package net.minecraft.src;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.world.World;
 
 import org.lwjgl.input.Keyboard;
 

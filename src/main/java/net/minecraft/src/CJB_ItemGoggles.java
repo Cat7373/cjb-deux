@@ -1,5 +1,8 @@
 package net.minecraft.src;
 
+import net.minecraft.item.EnumArmorMaterial;
+import net.minecraft.item.ItemArmor;
+
 public class CJB_ItemGoggles extends ItemArmor
 {
     public CJB_ItemGoggles(int par1, EnumArmorMaterial par2EnumArmorMaterial, int par3, int par4)

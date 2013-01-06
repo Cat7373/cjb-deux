@@ -1,5 +1,9 @@
 package net.minecraft.src;
 
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.Slot;
+import net.minecraft.item.ItemStack;
+
 public class CJB_Slot extends Slot
 {
 
