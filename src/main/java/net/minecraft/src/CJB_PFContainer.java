@@ -40,7 +40,7 @@ public class CJB_PFContainer extends Container
 
     public void updateCraftingResults()
     {
-        super.updateCraftingResults();
+        super.detectAndSendChanges();
         for (int i = 0; i < crafters.size(); i++)
         {
             ICrafting icrafting = (ICrafting)crafters.get(i);

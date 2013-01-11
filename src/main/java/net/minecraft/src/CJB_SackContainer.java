@@ -52,7 +52,7 @@ public class CJB_SackContainer extends Container
         {
             ItemStack itemstack1 = slot.getStack();
 
-            if (itemstack1.itemID == mod_cjb_items.Sack.shiftedIndex || itemstack1.itemID == mod_cjb_items.PF.shiftedIndex)
+            if (itemstack1.itemID == mod_cjb_items.Sack.itemID || itemstack1.itemID == mod_cjb_items.PF.itemID)
             	return null;
             
             itemstack = itemstack1.copy();

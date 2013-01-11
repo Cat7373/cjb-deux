@@ -142,7 +142,7 @@ public class CJB_PFData extends WorldSavedData implements IInventory
         {
             return false;
         }
-        ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(furnaceItemStacks[0].getItem().shiftedIndex);
+        ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(furnaceItemStacks[0].getItem().itemID);
         if (itemstack == null)
         {
             return false;
@@ -168,7 +168,7 @@ public class CJB_PFData extends WorldSavedData implements IInventory
         {
             return;
         }
-        ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(furnaceItemStacks[0].getItem().shiftedIndex);
+        ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(furnaceItemStacks[0].getItem().itemID);
         if (furnaceItemStacks[2] == null)
         {
             furnaceItemStacks[2] = itemstack.copy();
@@ -190,20 +190,20 @@ public class CJB_PFData extends WorldSavedData implements IInventory
         {
             return 0;
         }
-        int i = itemstack.getItem().shiftedIndex;
+        int i = itemstack.getItem().itemID;
         if (i < 256 && Block.blocksList[i].blockMaterial == Material.wood)
         {
             return 300;
         }
-        if (i == Item.stick.shiftedIndex)
+        if (i == Item.stick.itemID)
         {
             return 100;
         }
-        if (i == Item.coal.shiftedIndex)
+        if (i == Item.coal.itemID)
         {
             return 1600;
         }
-        if (i == Item.bucketLava.shiftedIndex)
+        if (i == Item.bucketLava.itemID)
         {
             return 20000;
         }
@@ -211,7 +211,7 @@ public class CJB_PFData extends WorldSavedData implements IInventory
         {
             return 100;
         }
-        if (i == Item.blazeRod.shiftedIndex)
+        if (i == Item.blazeRod.itemID)
         {
             return 2400;
         }

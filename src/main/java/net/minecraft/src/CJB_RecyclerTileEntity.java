@@ -154,7 +154,7 @@ public class CJB_RecyclerTileEntity extends TileEntity
     	
     	try {   		
     		if (irecipe instanceof ShapedRecipes) {
-    			if(irecipe.getRecipeOutput().itemID == Item.cake.shiftedIndex)
+    			if(irecipe.getRecipeOutput().itemID == Item.cake.itemID)
     			{
     				dispenseItem(new ItemStack(Item.sugar, 2, 0));
     				dispenseItem(new ItemStack(Item.wheat, 3, 0));

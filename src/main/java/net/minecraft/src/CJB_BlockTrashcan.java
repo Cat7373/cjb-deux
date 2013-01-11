@@ -90,23 +90,23 @@ public class CJB_BlockTrashcan extends BlockContainer
         {
             if(j == 1)
             {
-            	renderblocks.setRenderMinMax(0.18F, 0.0F, 0.15F, 0.82F, 0.8F, 0.18F);
+            	renderblocks.setRenderBounds(0.18F, 0.0F, 0.15F, 0.82F, 0.8F, 0.18F);
             }
             if(j == 2)
             {
-            	renderblocks.setRenderMinMax(0.15F, 0.0F, 0.15F, 0.18F, 0.8F, 0.85F);
+            	renderblocks.setRenderBounds(0.15F, 0.0F, 0.15F, 0.18F, 0.8F, 0.85F);
             } 
             if(j == 3)
             {
-            	renderblocks.setRenderMinMax(0.18F, 0.0F, 0.82F, 0.82F, 0.8F, 0.85F);
+            	renderblocks.setRenderBounds(0.18F, 0.0F, 0.82F, 0.82F, 0.8F, 0.85F);
             }
             if(j == 4)
             {
-            	renderblocks.setRenderMinMax(0.82F, 0.0F, 0.15F, 0.85F, 0.8F, 0.85F);
+            	renderblocks.setRenderBounds(0.82F, 0.0F, 0.15F, 0.85F, 0.8F, 0.85F);
             }
             if(j == 0)
             {
-            	renderblocks.setRenderMinMax(0.18F, 0.0F, 0.18F, 0.82F, 0.6F, 0.82F);
+            	renderblocks.setRenderBounds(0.18F, 0.0F, 0.18F, 0.82F, 0.6F, 0.82F);
             }
             GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
             tessellator.startDrawingQuads();
@@ -140,22 +140,22 @@ public class CJB_BlockTrashcan extends BlockContainer
     
     public boolean RenderInWorld(RenderBlocks renderblocks, IBlockAccess iblockaccess, int i, int j, int k, Block block)
     {
-        renderblocks.setRenderMinMax(0.18F, 0.0F, 0.15F, 0.82F, 0.8F, 0.19F);
+        renderblocks.setRenderBounds(0.18F, 0.0F, 0.15F, 0.82F, 0.8F, 0.19F);
         renderblocks.renderStandardBlock(block, i, j, k);
         
-        renderblocks.setRenderMinMax(0.18F, 0.0F, 0.81F, 0.82F, 0.8F, 0.85F);
+        renderblocks.setRenderBounds(0.18F, 0.0F, 0.81F, 0.82F, 0.8F, 0.85F);
         renderblocks.renderStandardBlock(block, i, j, k);
         
-        renderblocks.setRenderMinMax(0.15F, 0.0F, 0.15F, 0.19F, 0.8F, 0.85F);
+        renderblocks.setRenderBounds(0.15F, 0.0F, 0.15F, 0.19F, 0.8F, 0.85F);
         renderblocks.renderStandardBlock(block, i, j, k);
         
-        renderblocks.setRenderMinMax(0.81F, 0.0F, 0.15F, 0.85F, 0.8F, 0.85F);
+        renderblocks.setRenderBounds(0.81F, 0.0F, 0.15F, 0.85F, 0.8F, 0.85F);
         renderblocks.renderStandardBlock(block, i, j, k);
         
-        renderblocks.setRenderMinMax(0.19F, 0.0F, 0.19F, 0.81F, 0.6F, 0.81F);
+        renderblocks.setRenderBounds(0.19F, 0.0F, 0.19F, 0.81F, 0.6F, 0.81F);
         renderblocks.renderStandardBlock(block, i, j, k);
         
-        renderblocks.setRenderMinMax(0.15F, 0.0F, 0.15F, 0.85F, 0.8F, 0.85F);
+        renderblocks.setRenderBounds(0.15F, 0.0F, 0.15F, 0.85F, 0.8F, 0.85F);
         return false;
     }
 

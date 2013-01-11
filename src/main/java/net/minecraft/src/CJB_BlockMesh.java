@@ -77,19 +77,19 @@ public class CJB_BlockMesh extends Block
         {
             if(j == 0)
             {
-            	renderblocks.setRenderMinMax(0.0F, 0.8F, 0.2F, 1F, 0.9F, 0.3F);
+            	renderblocks.setRenderBounds(0.0F, 0.8F, 0.2F, 1F, 0.9F, 0.3F);
             }
             if(j == 1)
             {
-            	renderblocks.setRenderMinMax(0.0F, 0.8F, 0.7F, 1F, 0.9F, 0.8F);
+            	renderblocks.setRenderBounds(0.0F, 0.8F, 0.7F, 1F, 0.9F, 0.8F);
             } 
             if(j == 2)
             {
-            	renderblocks.setRenderMinMax(0.2F, 0.8F, 0.0F, 0.3F, 0.9F, 1F);
+            	renderblocks.setRenderBounds(0.2F, 0.8F, 0.0F, 0.3F, 0.9F, 1F);
             }
             if(j == 3)
             {
-            	renderblocks.setRenderMinMax(0.7F, 0.8F, 0.0F, 0.8F, 0.9F, 1F);
+            	renderblocks.setRenderBounds(0.7F, 0.8F, 0.0F, 0.8F, 0.9F, 1F);
             }
             GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
             GL11.glScalef(1f, 1f, 1f);
@@ -124,16 +124,16 @@ public class CJB_BlockMesh extends Block
     public boolean RenderInWorld(RenderBlocks renderblocks, IBlockAccess iblockaccess, int i, int j, int k, Block block)
     {
        
-    	renderblocks.setRenderMinMax(0.0F, 0.8F, 0.2F, 1F, 0.9F, 0.3F);
+    	renderblocks.setRenderBounds(0.0F, 0.8F, 0.2F, 1F, 0.9F, 0.3F);
         renderblocks.renderStandardBlock(block, i, j, k);
         
-        renderblocks.setRenderMinMax(0.0F, 0.8F, 0.7F, 1F, 0.9F, 0.8F);
+        renderblocks.setRenderBounds(0.0F, 0.8F, 0.7F, 1F, 0.9F, 0.8F);
         renderblocks.renderStandardBlock(block, i, j, k);
         
-        renderblocks.setRenderMinMax(0.2F, 0.8F, 0.0F, 0.3F, 0.9F, 1F);
+        renderblocks.setRenderBounds(0.2F, 0.8F, 0.0F, 0.3F, 0.9F, 1F);
         renderblocks.renderStandardBlock(block, i, j, k);
         
-        renderblocks.setRenderMinMax(0.7F, 0.8F, 0.0F, 0.8F, 0.9F, 1F);
+        renderblocks.setRenderBounds(0.7F, 0.8F, 0.0F, 0.8F, 0.9F, 1F);
         renderblocks.renderStandardBlock(block, i, j, k);
         return false;
     }

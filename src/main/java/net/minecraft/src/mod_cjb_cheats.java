@@ -124,9 +124,9 @@ public class mod_cjb_cheats extends BaseMod {
 				if (mc.isSingleplayer() && Keyboard.isKeyDown(CJB.KeyGameMode) && !flypressed)
 				{
 					if (mc.playerController.isNotCreative()) {
-						CJB.plr.sendGameTypeToPlayer(EnumGameType.CREATIVE);
+						CJB.plr.setGameType(EnumGameType.CREATIVE);
 					} else {
-						CJB.plr.sendGameTypeToPlayer(EnumGameType.SURVIVAL);
+						CJB.plr.setGameType(EnumGameType.SURVIVAL);
 					}
 					flypressed = true;
 				}

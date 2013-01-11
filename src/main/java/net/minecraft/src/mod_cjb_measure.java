@@ -15,7 +15,7 @@ public class mod_cjb_measure extends BaseMod {
 	{
 		CJB.modmeasures = true;
 		ModLoader.setInGameHook(this, true, false);
-		CJB.mesitem = CJB_Settings.getInteger("measures.item", Item.stick.shiftedIndex);
+		CJB.mesitem = CJB_Settings.getInteger("measures.item", Item.stick.itemID);
 	}
 	
 	@Override

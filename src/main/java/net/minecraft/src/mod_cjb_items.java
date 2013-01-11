@@ -298,7 +298,7 @@ public class mod_cjb_items extends BaseMod {
 		EntityPlayer plr = CJB.plr;
 		
 		if (mobplacerb && !(Item.egg instanceof CJB_ItemEgg) ) {
-			Item.itemsList[Item.egg.shiftedIndex] = null;
+			Item.itemsList[Item.egg.itemID] = null;
 			Item.egg = (new CJB_ItemEgg(88)).setIconCoord(12, 0).setItemName("egg");
 		}
 		

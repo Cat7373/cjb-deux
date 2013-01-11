@@ -118,7 +118,7 @@ public class CJB_PlayerServer extends ServerPlayerBase{
 					itemstack.setItemDamage(0);
 			}
 
-			if (CJB.infinitearrows && itemstack.itemID == Item.arrow.shiftedIndex){
+			if (CJB.infinitearrows && itemstack.itemID == Item.arrow.itemID){
 				itemstack.stackSize = 9;
 			}
 			
@@ -211,15 +211,15 @@ public class CJB_PlayerServer extends ServerPlayerBase{
 			                {
 			                	player.triggerAchievement(AchievementList.mineWood);
 			                }
-			                if (itemstack.itemID == Item.leather.shiftedIndex)
+			                if (itemstack.itemID == Item.leather.itemID)
 			                {
 			                	player.triggerAchievement(AchievementList.killCow);
 			                }
-			                if (itemstack.itemID == Item.diamond.shiftedIndex)
+			                if (itemstack.itemID == Item.diamond.itemID)
 			                {
 			                	player.triggerAchievement(AchievementList.diamonds);
 			                }
-			                if (itemstack.itemID == Item.blazeRod.shiftedIndex)
+			                if (itemstack.itemID == Item.blazeRod.itemID)
 			                {
 			                	player.triggerAchievement(AchievementList.blazeRod);
 			                }

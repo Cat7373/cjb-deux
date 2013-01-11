@@ -450,7 +450,7 @@ public class CJB_GuiItemSpawner extends CJB_GuiMain
     		buttonslist.add(new CJB_ButtonItem(-1, k + 14, l + 19, new ItemStack(Item.itemsList[398], 1, 4)));
     		buttonslist.add(new CJB_ButtonItem(-1, k + 14, l + 19, new ItemStack(Item.itemsList[399], 1, 4)));
     		Integer integer;
-            for (Iterator iterator = EntityList.entityEggs.keySet().iterator(); iterator.hasNext(); buttonslist.add(new CJB_ButtonItem(-1, k + 14, l + 19, new ItemStack(Item.monsterPlacer.shiftedIndex, 1, integer.intValue()))))
+            for (Iterator iterator = EntityList.entityEggs.keySet().iterator(); iterator.hasNext(); buttonslist.add(new CJB_ButtonItem(-1, k + 14, l + 19, new ItemStack(Item.monsterPlacer.itemID, 1, integer.intValue()))))
             {
                 integer = (Integer)iterator.next();
             }
@@ -593,15 +593,15 @@ public class CJB_GuiItemSpawner extends CJB_GuiMain
                 {
     				mc.thePlayer.triggerAchievement(AchievementList.mineWood);
                 }
-                if (stack.itemID == Item.leather.shiftedIndex)
+                if (stack.itemID == Item.leather.itemID)
                 {
                 	mc.thePlayer.triggerAchievement(AchievementList.killCow);
                 }
-                if (stack.itemID == Item.diamond.shiftedIndex)
+                if (stack.itemID == Item.diamond.itemID)
                 {
                 	mc.thePlayer.triggerAchievement(AchievementList.diamonds);
                 }
-                if (stack.itemID == Item.blazeRod.shiftedIndex)
+                if (stack.itemID == Item.blazeRod.itemID)
                 {
                 	mc.thePlayer.triggerAchievement(AchievementList.blazeRod);
                 }

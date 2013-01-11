@@ -15,10 +15,10 @@ public class CJB_Slot extends Slot
 
     public boolean isItemValid(ItemStack itemstack)
     {
-    	if ( mod_cjb_items.pfb && itemstack.itemID == mod_cjb_items.PF.shiftedIndex)
+    	if ( mod_cjb_items.pfb && itemstack.itemID == mod_cjb_items.PF.itemID)
     		return false;
     	
-    	if (itemstack.itemID == mod_cjb_items.Sack.shiftedIndex)
+    	if (itemstack.itemID == mod_cjb_items.Sack.itemID)
     		return false;
     	
         return super.isItemValid(itemstack);

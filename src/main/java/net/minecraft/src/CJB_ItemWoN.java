@@ -31,7 +31,7 @@ public class CJB_ItemWoN extends Item
     @Override
     public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer entityplayer)
     {
-    	if (itemstack.itemID == mod_cjb_items.WoNe.shiftedIndex) return itemstack;
+    	if (itemstack.itemID == mod_cjb_items.WoNe.itemID) return itemstack;
     	
         float pitch = entityplayer.rotationPitch;
         float yaw = entityplayer.rotationYaw;

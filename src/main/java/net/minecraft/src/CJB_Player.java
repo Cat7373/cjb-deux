@@ -192,7 +192,7 @@ public class CJB_Player extends PlayerBase{
 					itemstack.setItemDamage(0);
 			}
 
-			if (CJB.infinitearrows && itemstack.itemID == Item.arrow.shiftedIndex){
+			if (CJB.infinitearrows && itemstack.itemID == Item.arrow.itemID){
 				itemstack.stackSize = 9;
 			}
 			

@@ -3,32 +3,13 @@ set -o nounset
 set -o errexit
 set -o xtrace
 
-
-MOD_VERSION="1.0-SNAPSHOT"
-MC_VERSION="1.4.6"
-
-
 # self references
 CMD=$(readlink -f $0)
 CMD_NAME=$(basename $CMD)
 CMD_HOME=$(dirname $CMD)
 
-# project style: $BASEDIR/src/main/bin
-BASEDIR=$(readlink -f "$CMD_HOME/../../..")
-BUILD_DIR="$BASEDIR/target"
-MOD_ZIP="CJB-Deux-${MC_VERSION}-${MOD_VERSION}.zip"
-
-CJB_HOME="$BASEDIR"
-CJB_SRC_DIR="$CJB_HOME/src/main/java"
-CJB_RESOURCE_DIR="$CJB_HOME/src/main/resources"
-CJB_TEXTURE_DIR="$CJB_HOME/src/main/textures"
-
-MCP_HOME="$BASEDIR/forge/mcp"
-MCP_SRC_DIR="$MCP_HOME/src/minecraft"
-MCP_REOBF_DIR="$MCP_HOME/reobf/minecraft"
-
-PAPI_HOME="$BASEDIR/forge/player-api"
-PAPI_SRC_DIR="$PAPI_HOME/src/minecraft"
+# configuration
+source "$CMD_HOME/cjbd-config.sh"
 
 
 function exit_usage() { print_usage; exit $1; }
@@ -36,7 +17,7 @@ function exit_usage() { print_usage; exit $1; }
 function print_usage() {
 cat <<_EOF
 USAGE: 
-Simple description
+Prepare the MOD dir for use with a new forge
 
   -s SERVER        x, y, z
   -v VERSION       p, d, q

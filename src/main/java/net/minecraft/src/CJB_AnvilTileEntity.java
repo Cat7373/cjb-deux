@@ -322,10 +322,10 @@ public class CJB_AnvilTileEntity extends TileEntity implements IInventory
     			else
     				return false;
     		} else {
-	    		if (stack.itemID == mod_cjb_items.HammerWood.shiftedIndex) return true;
-	    		if (stack.itemID == mod_cjb_items.HammerStone.shiftedIndex) return true;
-	    		if (stack.itemID == mod_cjb_items.HammerIron.shiftedIndex) return true;
-	    		if (stack.itemID == mod_cjb_items.HammerDiamond.shiftedIndex) return true;
+	    		if (stack.itemID == mod_cjb_items.HammerWood.itemID) return true;
+	    		if (stack.itemID == mod_cjb_items.HammerStone.itemID) return true;
+	    		if (stack.itemID == mod_cjb_items.HammerIron.itemID) return true;
+	    		if (stack.itemID == mod_cjb_items.HammerDiamond.itemID) return true;
     		}
     	}
     	

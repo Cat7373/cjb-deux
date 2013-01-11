@@ -47,7 +47,7 @@ public class CJB_AnvilContainer extends Container
      */
     public void updateCraftingResults()
     {
-        super.updateCraftingResults();
+        super.detectAndSendChanges();
         Iterator var1 = this.crafters.iterator();
 
         while (var1.hasNext())
